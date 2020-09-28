@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { MyEvent } from '../data/envent';
 
 
@@ -15,7 +15,10 @@ export class EventService {
   }
 
     getEventsAsync() : Observable<MyEvent[]> {
-        return of(this.EVENTS);
+      let subject = new Subject<MyEvent[]>();
+      setTimeout(() => {subject.next(this.EVENTS); subject.complete()}, 2000);
+      //return of(this.EVENTS);
+      return subject;
     }
 
     getEventsSync() : MyEvent[] {

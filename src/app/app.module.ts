@@ -28,7 +28,22 @@ import { EventRouteActivatorComponent } from './events/event-detail/event-route-
     BrowserModule,
     RoutingModule
   ],
-  providers: [ToastrService],
+  providers: [
+    ToastrService,
+    {
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// Code peut etre declaré dans son propre fichier
+export function checkDirtyState(component: CreateEventComponent) {
+  if (component.isDirty) {
+    return window.confirm('You have not save this item, Are you you want to leave ?');
+  } else {
+    return true;
+  }
+}

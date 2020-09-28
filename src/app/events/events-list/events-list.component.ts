@@ -31,16 +31,29 @@ export class EventsListComponent implements OnInit {
   constructor(private eventService : EventService, private toastrService: ToastrService) { }
 
   ngOnInit() {
-    //this.events = FakeData.getEvents();
-    this.events = this.eventService.getEventsSync();
-  }
+    // de facon synchrone
+    //this.events = this.getEventsSync();
 
-  getEvents(): Observable<MyEvent[]> {
-    return this.eventService.getEventsAsync();
+    // de facon asynchrone
+    this.getEventsASync().subscribe(
+      {
+        next : events => this.events = events
+      }
+    );
   }
 
   detailClick(eventName: string): void {
     this.toastrService.success(eventName);
+  }
+
+  getEventsSync(): MyEvent[] {
+    console.log('Donnees recuperés de facon synchrone');
+    return this.events = this.eventService.getEventsSync();
+  }
+
+  getEventsASync(): Observable<MyEvent[]> {
+    console.log('Donnees recuperés de facon asynchrone');
+    return this.eventService.getEventsAsync();
   }
 
 }
