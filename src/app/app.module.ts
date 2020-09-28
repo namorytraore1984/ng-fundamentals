@@ -10,6 +10,9 @@ import { ToastrService } from './data/common/toastr-service';
 import { RoutingModule } from './routing/routing.module';
 import { EventThumnailComponent } from './events/event-thumnail/event-thumnail.component';
 import { EventDetailComponent } from './events/event-detail/event-detail.component';
+import { CreateEventComponent } from './events/create-event/create-event.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { EventRouteActivatorComponent } from './events/event-detail/event-route-activator.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { EventDetailComponent } from './events/event-detail/event-detail.compone
     EventsListComponent,
     EventThumnailComponent,
     NavBarComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    CreateEventComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
