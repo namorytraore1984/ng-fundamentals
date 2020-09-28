@@ -1,0 +1,16 @@
+<div>
+  <h1>Upcomming Angular Events</h1>
+  <hr/>
+
+  <div class="row">
+    <!--div class="col-md-6" *ngFor="let currentEvent of getEvents | async"-->
+    <div class="col-md-6" *ngFor="let currentEvent of events">
+
+      <app-event-thumnail #eventDetail [myEvent]="currentEvent" (click)="detailClick(currentEvent.name)"></app-event-thumnail>
+
+      <!--button class="btn btn-primary" (click)="eventDetail.logTest(currentEvent.name)">Click me!</button-->
+
+    </div>
+  </div>
+
+</div>
